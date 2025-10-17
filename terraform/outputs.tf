@@ -26,13 +26,3 @@ output "ecr_repository_url" {
   value = aws_ecr_repository.api_repo.repository_url
   description = "The URL of the ECR repository"
 }
-
-output "s3_bucket_name" {
-  value = aws_s3_bucket.terraform_outputs.id
-  description = "The name of the S3 bucket where Terraform outputs are stored"
-}
-
-output "s3_bucket_arn" {
-  value = aws_s3_bucket.terraform_outputs.arn
-  description = "The ARN of the S3 bucket where Terraform outputs are stored"
-}

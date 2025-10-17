@@ -108,24 +108,6 @@ variable "tags" {
     description = "Tags applied to all resources created"
 }
 
-variable "s3_bucket_name" {
-  type        = string
-  default     = "my-terraform-outputs-bucket"
-  description = "Nombre del bucket S3 donde se guardarán los outputs de Terraform"
-}
-
-variable "s3_bucket_region" {
-  type        = string
-  default     = "us-east-1"
-  description = "Región donde se creará el bucket S3"
-}
-
-variable "s3_bucket_versioning" {
-  type        = bool
-  default     = true
-  description = "Habilitar versionado en el bucket S3"
-}
-
 variable "environment" {
   description = "type of environment(dev, staging, prod)"
   type        = string
