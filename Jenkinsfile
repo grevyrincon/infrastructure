@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Terraform Init') {
             steps {
-                withAWS(region: ${AWS_REGION}, credentials: ${SECRET_NAME}) {  
+                withAWS(region: "${AWS_REGION}", credentials: "${SECRET_NAME}") {  
                     dir("${TF_WORKING_DIR}") {
                         sh """
                         terraform init -backend-config=backend-${ENV}.tfvars -input=false
