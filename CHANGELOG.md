@@ -12,3 +12,7 @@ All notable changes to this project will be documented in this file.
 ## [v0.3.0] - 2025-10-17
 ### Added
 - added Jenkinsfile to deploy the infrastructure with pipelines 
+
+## [v0.4.0] - 2025-10-17
+### Added
+- delete the s3 bucket that was saving the terraform outpud
