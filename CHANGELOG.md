@@ -16,3 +16,7 @@ All notable changes to this project will be documented in this file.
 ## [v0.4.0] - 2025-10-17
 ### Added
 - delete the s3 bucket that was saving the terraform outpud
+
+## [v1.0.0] - 2025-10-17
+### docs
+- the current version create the infraestructure with jenkins pipelines !!
