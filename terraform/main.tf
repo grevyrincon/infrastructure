@@ -76,45 +76,4 @@ resource "aws_ecr_repository" "api_repo" {
     tags = var.tags
 }
 
-# -------------------
-# S3 Bucket para Terraform outputs
-# -------------------
-resource "aws_s3_bucket" "terraform_outputs" {
-  bucket = var.s3_bucket_name
-  region = var.s3_bucket_region
-  force_destroy = true
-
-  tags = merge(
-    var.tags,
-    {
-      Name        = var.s3_bucket_name
-      Environment = "shared"
-    }
-  )
-}
-
-# Habilitar versionado si está activado
-resource "aws_s3_bucket_versioning" "terraform_outputs_versioning" {
-  bucket = aws_s3_bucket.terraform_outputs.id
-
-  versioning_configuration {
-    status = var.s3_bucket_versioning ? "Enabled" : "Suspended"
-  }
-}
-
-resource "null_resource" "export_outputs_to_s3" {
-  triggers = {
-    environment = var.environment
-  }
-  provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command = "terraform output -json > outputs.json && aws s3 cp outputs.json s3://${var.s3_bucket_name}/outputs/${var.environment}-outputs.json"
-  }
-
-  depends_on = [
-    module.eks,
-    aws_ecr_repository.api_repo,
-    aws_s3_bucket.terraform_outputs
-  ]
-}
 
